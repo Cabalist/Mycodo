@@ -30,24 +30,22 @@ def menu():
 
     args = parser.parse_args()
 
-    sensor, pin = args
-
-    if sensor == 'DHT11':
+    if args.sensor == 'DHT11':
         device = Adafruit_DHT.DHT11
-    elif sensor == 'DHT22':
+    elif args.sensor == 'DHT22':
         device = Adafruit_DHT.DHT22
-    elif sensor == 'AM2302':
+    elif args.sensor == 'AM2302':
         device = Adafruit_DHT.AM2302
     else:
         # Invalid device name
         sys.exit(1)
 
-    if not 0 < pin < 40:
+    if not 0 < args.pin < 40:
         print 'Error: Invalid GPIO pin.\n'
         sys.exit(1)
 
     for x in range(10):
-        humidity, temperature = Adafruit_DHT.read_retry(device, pin)
+        humidity, temperature = Adafruit_DHT.read_retry(device, args.pin)
         print "Temperature: %s" % temperature
         print "Humidity: %s" % humidity
         time.sleep(2)
