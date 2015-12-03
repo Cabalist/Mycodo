@@ -53,3 +53,7 @@ SENSOR_T_LOG_LOCK_PATH = os.path.join(LOCK_DIRECTORY, "sensor-t-log")
 SENSOR_HT_LOG_LOCK_PATH = os.path.join(LOCK_DIRECTORY, "sensor-ht-log")
 SENSOR_CO2_LOG_LOCK_PATH = os.path.join(LOCK_DIRECTORY, "sensor-co2-log")
 SENSOR_PRESS_LOG_LOCK_PATH = os.path.join(LOCK_DIRECTORY, "sensor-press-log")
+
+SQL_DATABASE_MYCODO = '/var/www/mycodo/config/mycodo.db'
+SQL_DATABASE_USER = '/var/www/mycodo/config/users.db'
+SQL_DATABASE_NOTE = '/var/www/mycodo/config/notes.db'
