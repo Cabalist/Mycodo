@@ -42,8 +42,14 @@ with session_scope(MYCODO_DB_PATH) as the_session:
     relays = the_session.query(Relays).all()
 
     for each_relay in relays:
-        #Setup all the pins as an output
+        # Setup all the pins as an output
         GPIO.setup(each_relay.pin, GPIO.OUT)
+
+        # If the relay is not set to start make sure it is set to OFF
+        if not each_relay.start_state:
+            GPIO.output(each_relay.pin, not each_relay.trigger)
+
+        # Turn on relays that are set to startup on
         if each_relay.start_state:
             # Only push the trigger to the relay with the start_state
             GPIO.output(each_relay.pin, each_relay.trigger)
